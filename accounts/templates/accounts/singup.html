@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{% url 'singup' %}" method = "POST">
+{% csrf_token %}
+<h1>singup</h1><br>
+<div style="color:red;">{{error}}</div>
+<br>
+username:   <br> 
+<input type="text" name ='username'><br> <br>
+password: <br>
+<input type="password" name = password1> <br> <br>
+confirm password: <br>
+<input type="password" name = password2>  <br><br>
+
+<input class= " btn btn-primary " type="submit"  value = "sing up!" >
+</form>
+
+{% endblock %}
