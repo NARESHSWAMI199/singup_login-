@@ -25,10 +25,11 @@ def singup(request):
 def login(request):
     if request.method=='POST':
         user =auth.authenticate (username = request.POST['username'] , password =request.POST['password'])
-        auth.login(request,user)
-        return redirect('home')
-    else :
-        return render (request,"accounts/login.html",{'error':'sorry  username or password incorrect!'})
+        if user:
+            auth.login(request,user)
+            return redirect('home')
+        else :
+            return render (request,"accounts/login.html",{'error':'sorry  username or password incorrect!'})
 
     return render (request,"accounts/login.html")
 
